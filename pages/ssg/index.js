@@ -91,7 +91,7 @@ const Ssg = ({ data }) => {
           SSG(Static Site Generation) is pre-rendering your React app into HTML
           at build time. <br />
           In short, SSG will make the HTML pages out of a React app at the
-          <br /> build time so it doesn't have to do it for every request,
+          <br /> build time so it doesn&apos;t have to do it for every request,
           <br />
           and neither does the browser have to do it on the client-side.
           <br /> It is even faster than SSR

@@ -106,7 +106,7 @@ const Ssr = ({ data }) => {
           Here, the page is rendered through SSR. <br />
           You can check the page source by clicking right <br /> on mouse and
           select
-          <b> 'View Page Source'</b> <br /> and you can find all the HTML tags
+          <b> View Page Source</b> <br /> and you can find all the HTML tags
           related <br />
           to the page as well as table because it is
           <br /> rendered through server

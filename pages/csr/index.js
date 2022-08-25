@@ -109,7 +109,7 @@ const Csr = () => {
           Here, the table is rendered through CSR. <br />
           You can check the page source by clicking right <br /> on mouse and
           select
-          <b> 'View Page Source'</b> <br /> but you cannot find the HTML tags
+          <b> View Page Source</b> <br /> but you cannot find the HTML tags
           related to table
         </div>
         <div style={table}>
