@@ -52,7 +52,7 @@ export async function getServerSideProps() {
   };
 }
 
-const ssr = ({ data }) => {
+const Ssr = ({ data }) => {
   const router = useRouter();
   const heading = {
     textAlign: "center",
@@ -129,4 +129,4 @@ const ssr = ({ data }) => {
   );
 };
 
-export default ssr;
+export default Ssr;

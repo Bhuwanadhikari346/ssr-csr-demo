@@ -43,7 +43,7 @@ const columns = [
   },
 ];
 
-const csr = () => {
+const Csr = () => {
   const [customers, setCustomers] = useState([]);
   const router = useRouter();
   useEffect(() => {
@@ -134,4 +134,4 @@ const csr = () => {
   );
 };
 
-export default csr;
+export default Csr;

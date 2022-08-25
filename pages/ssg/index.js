@@ -52,7 +52,7 @@ export async function getStaticProps() {
   };
 }
 
-const ssg = ({ data }) => {
+const Ssg = ({ data }) => {
   const router = useRouter();
   const heading = {
     textAlign: "center",
@@ -140,4 +140,4 @@ const ssg = ({ data }) => {
   );
 };
 
-export default ssg;
+export default Ssg;
