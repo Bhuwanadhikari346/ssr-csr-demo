@@ -3,57 +3,58 @@ import { Space, Table, Tag, Button } from "antd";
 import { useRouter } from "next/router";
 import CustomerData from "../../services/customer";
 
-const columns = [
-  {
-    title: "Name",
-    dataIndex: "name",
-    key: "name",
-  },
-  {
-    title: "Age",
-    dataIndex: "age",
-    key: "age",
-  },
-  {
-    title: "Address",
-    dataIndex: "address",
-    key: "address",
-  },
-  {
-    title: "Phone",
-    dataIndex: "phone",
-    key: "phone",
-  },
-  {
-    title: "Action",
-    key: "action",
-    render: (_, record) => (
-      <Space size="middle">
-        <Button
-          onClick={() => {
-            router.push("/");
-          }}
-          type="danger"
-        >
-          Details
-        </Button>
-      </Space>
-    ),
-  },
-];
-
 export async function getServerSideProps() {
   const res = await CustomerData.getAllCustomers();
 
   return {
     props: {
-      data: res.docs.map((doc) => ({ ...doc.data() })),
+      data: res.docs.map((doc) => ({ ...doc.data(), id: doc.id })),
     },
   };
 }
 
 const Ssr = ({ data }) => {
   const router = useRouter();
+
+  const columns = [
+    {
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+    },
+    {
+      title: "Age",
+      dataIndex: "age",
+      key: "age",
+    },
+    {
+      title: "Address",
+      dataIndex: "address",
+      key: "address",
+    },
+    {
+      title: "Phone",
+      dataIndex: "phone",
+      key: "phone",
+    },
+    {
+      title: "Action",
+      dataIndex: "id",
+      key: "id",
+      render: (_, record) => (
+        <Space size="middle">
+          <Button
+            onClick={() => {
+              router.push(`/ssr/${record.id}`);
+            }}
+            type="danger"
+          >
+            Details
+          </Button>
+        </Space>
+      ),
+    },
+  ];
   const heading = {
     textAlign: "center",
     marginTop: "40px",

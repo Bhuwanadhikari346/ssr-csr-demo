@@ -3,46 +3,6 @@ import { Space, Table, Spin, Button } from "antd";
 import { useRouter } from "next/router";
 import CustomerData from "../../services/customer";
 
-const columns = [
-  {
-    title: "Name",
-    dataIndex: "name",
-    key: "name",
-  },
-  {
-    title: "Age",
-    dataIndex: "age",
-    key: "age",
-  },
-  {
-    title: "Address",
-    dataIndex: "address",
-    key: "address",
-  },
-  {
-    title: "Phone",
-    dataIndex: "phone",
-    key: "phone",
-  },
-
-  {
-    title: "Action",
-    key: "action",
-    render: (_, record) => (
-      <Space size="middle">
-        <Button
-          onClick={() => {
-            router.push("/");
-          }}
-          type="danger"
-        >
-          Details
-        </Button>
-      </Space>
-    ),
-  },
-];
-
 const Csr = () => {
   const [customers, setCustomers] = useState([]);
   const router = useRouter();
@@ -52,8 +12,50 @@ const Csr = () => {
 
   const getCustomers = async () => {
     const data = await CustomerData.getAllCustomers();
-    setCustomers(data.docs.map((doc) => ({ ...doc.data() })));
+    setCustomers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    console.log(data?.docs);
   };
+
+  const columns = [
+    {
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+    },
+    {
+      title: "Age",
+      dataIndex: "age",
+      key: "age",
+    },
+    {
+      title: "Address",
+      dataIndex: "address",
+      key: "address",
+    },
+    {
+      title: "Phone",
+      dataIndex: "phone",
+      key: "phone",
+    },
+
+    {
+      title: "Action",
+      dataIndex: "id",
+      key: "id",
+      render: (_, record) => (
+        <Space size="middle">
+          <Button
+            onClick={() => {
+              router.push(`/csr/${record.id}`);
+            }}
+            type="danger"
+          >
+            Details
+          </Button>
+        </Space>
+      ),
+    },
+  ];
 
   const data = customers;
   const heading = {

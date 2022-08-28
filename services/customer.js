@@ -1,5 +1,5 @@
 import { db } from "../config/firebase";
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import { collection, getDocs, addDoc, getDoc, doc } from "firebase/firestore";
 
 const customerCollectionRef = collection(db, "users");
 class CustomerData {
@@ -8,6 +8,11 @@ class CustomerData {
   };
   addcustomers = (newCustomer) => {
     return addDoc(customerCollectionRef, newCustomer);
+  };
+
+  getCustomer = (id) => {
+    const userDoc = doc(db, "users", id);
+    return getDoc(userDoc);
   };
 }
 
