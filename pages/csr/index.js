@@ -13,7 +13,6 @@ const Csr = () => {
   const getCustomers = async () => {
     const data = await CustomerData.getAllCustomers();
     setCustomers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    console.log(data?.docs);
   };
 
   const columns = [
